@@ -1,0 +1,28 @@
+
+# Terraform state (kan innehålla känslig information)
+*.tfstate
+*.tfstate.*
+
+# Terraform-planer
+*.tfplan
+tfplan
+
+# Lokala Terraform-plugins
+.terraform/
+
+# Variabler med miljöspecifika värden
+*.tfvars
+*.tfvars.json
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# SSH-nycklar
+*.pem
+id_rsa*
+id_ed25519*
+
+# Lokala miljöfiler
+.env
+.env.*

@@ -1,0 +1,33 @@
+
+---
+- name: Installera och konfigurera webbservern
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Installera Nginx och Git
+      ansible.builtin.dnf:
+        name:
+          - nginx
+          - git-core
+        state: present
+
+    - name: Starta Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Hämta webbplatsen från GitHub
+      ansible.builtin.git:
+        repo: "https://github.com/nenemustafa/Hellome.git"
+        dest: /tmp/hello-me
+        version: HEAD
+        update: true
+
+    - name: Kopiera webbplatsen till Nginx
+      ansible.builtin.copy:
+        src: /tmp/hello-me/html/
+        dest: /usr/share/nginx/html/
+        remote_src: true
