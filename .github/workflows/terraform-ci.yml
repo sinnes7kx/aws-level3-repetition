@@ -26,3 +26,15 @@ jobs:
 
       - name: Terraform Validate
         run: terraform validate
+
+      - name: Bash Syntax Check
+        run: bash -n user-data.web.sh
+
+      - name: Install Ansible
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ansible-core
+
+      - name: Ansible Syntax Check
+        run: ansible-playbook -i localhost, --syntax-check config-and-deploy.web.yml
+
