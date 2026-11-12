@@ -20,3 +20,23 @@ DevOps-projekt med Terraform, Bash, Ansible och Git.
 ## Status
 Konfigurationen är validerad lokalt.
 Ingen EC2-instans har skapats under repetitionen.
+
+## CI/CD – GitHub Actions
+
+Projektet använder GitHub Actions för automatisk kodkontroll.
+
+Vid varje push till main eller vid en Pull Request körs:
+
+- Terraform Format Check
+- Terraform Init
+- Terraform Validate
+- Bash Syntax Check
+- Ansible Syntax Check
+
+Pipelinen kontrollerar koden utan att skapa AWS-resurser.
+
+## Git-arbetsflöde
+
+Ändringar utvecklas i separata feature branches.
+En Pull Request används för att granska och sammanfoga
+ändringarna till main.
